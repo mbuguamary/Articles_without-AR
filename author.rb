@@ -1,20 +1,11 @@
-# Please copy/paste all three classes into this file to submit your solution!
 class Author
     attr_reader :name
    def initialize(name)
     @name=name
    end
-
-  #  `Author#articles`
-     def articles
-     Article.all.select{|article|article.author.self}
-     end
-     def magazines
-      articles.map(magazine).uniq
-     end
 end
 
-class Magazine  
+class Magazine < Author 
     attr_accessor :name ,:category
     @@all =[]
     def initialize(name, category)
@@ -33,7 +24,7 @@ class Magazine
 
 end
 
-class Article 
+class Article < Author
      attr_reader :title
      @@all =[]
     def initialize(author,magazine,title)
